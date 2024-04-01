@@ -9,10 +9,10 @@ jobs:
 
     steps:
     - name: Download
-      run: Invoke-WebRequest https://github.com/topa1212/data/releases/download/daata/dontdel123.zip -OutFile dontdel.zip 
+      run: Invoke-WebRequest https://github.com/topa1212/data/releases/download/daata/dontdel.zip -OutFile dontdel.zip 
 
     - name: Extract
-      run: Expand-Archive dontdel.zip -DestinationPath "C:\Users\Public\Desktop"
+      run: Expand-Archive dontdel123.zip -DestinationPath "C:\Users\Public\Desktop"
    
     - name: TIME ZONE 
       run: cmd /c TZUTIL /S "US Mountain Standard Time"
