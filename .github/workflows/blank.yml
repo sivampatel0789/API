@@ -1,24 +1,28 @@
-name: Cl
 
-on: [push, workflow_dispatch]
+name: AI
+on: workflow_dispatch
 
 jobs:
   build:
 
     runs-on: windows-latest
+    timeout-minutes: 45
 
     steps:
+    - name: IP1
+      run: cmd /c curl ipinfo.io
+  
+    - name: TIME ZONE123 
+      run: $timezone = (Invoke-RestMethod -Uri "https://ipinfo.io/json").timezone; switch ($timezone) { "America/Los_Angeles" { $timezone = "US Mountain Standard Time" } "Los Angeles" { $timezone = "Pacific Standard Time" } default { $timezone = "okjaanu" } }; tzutil /s "$timezone"; Write-Output "Time zone changed to $timezone"
+ 
     - name: Download
       run: Invoke-WebRequest https://github.com/topa1212/data/releases/download/daata/dontdel.zip -OutFile dontdel.zip 
 
     - name: Extract
       run: Expand-Archive dontdel.zip -DestinationPath "C:\Users\Public\Desktop"
-   
-    - name: TIME ZONE 
-      run: cmd /c TZUTIL /S "US Mountain Standard Time"
-          
+
     - name: USER CODE
-      run: cmd /c C:\Users\Public\Desktop\dontdel\ngrok.exe authtoken 22E3jyrO0gYE4w2YZ9jyhkijRvF_6r4bMdXDkZ519JoKAcudb
+      run: cmd /c C:\Users\Public\Desktop\dontdel\ngrok.exe authtoken 2fEUTbYZhTA70PgQFdG7grZRLDZ_ttozYEZpfCaRV96kqSmx
     
     - name: SET PRO
       run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
